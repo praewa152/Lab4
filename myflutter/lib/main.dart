@@ -19,6 +19,17 @@ class MyHomePage extends StatefulWidget {
 }
 class _MyHomePageState extends State<MyHomePage> {
   int number = 0;
+
+ @override
+ Widget build(BuildContext context){
+ List<Widget> data = [];
+  data.add(Text("กดปุ่มเพื่อเพิ่มจำนวน"));
+  data.add(
+            Text(
+              number.toString(),
+              style: TextStyle(fontSize: 60),
+            ),
+            );
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [];
@@ -30,33 +41,51 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     data.add(Text("hi bro"));
+    for(var i = 0 ;i<10;i++){
+        data.add(Text("flutter"));
     for (var i = 0; i < 10; i++) {
       data.add(Text("flutter"));
     }
     return Scaffold(
       appBar: AppBar(
-        //หัวเมนู
-        title: Text("เมนู",
-        style: TextStyle(fontSize: 30),),
-        title: Text(
-          "เมนู",
-          style: TextStyle(fontSize: 30),
-        ),
+        title: Text("Hello Flutter"),
       ),
       body: Center(
         child: ListView(
-          children: getData(5),
-          children: getData(20),
+          children:data,
+          children: getData(15),
         ),
       ),
     );
-@@ -63,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
-    //text wiget
+  }
+void addNumber() {
+  setState(() {
+    number++;
+  });
+}
+ List<Widget> getData(int count){
+
+  List<Widget> data = [];
+    for(var i = 0 ;i<count;i++){
+        data.add(Text("รายการที่ ${i+1}"));
+  void addNumber() {
+    setState(() {
+      number++;
+    });
+  }
+
+ }
+ return data;
+//เตรียมข้อมูล
+  List<Widget> getData(int count) {
     List<Widget> data = [];
     for (var i = 0; i < count; i++) {
-      var menu = ListTile(title:Text("เมนูที่ $i"));
-      var menu = ListTile(title: Text("เมนูที่ ${i + 1}",style: TextStyle(fontSize: 25),),
-      subtitle: Text("เมนูที่อาหาร ${i + 1}"),);
-      data.add(menu);
+      data.add(Text(
+        "เมนูที่ ${i + 1}",
+        style: TextStyle(fontSize: 30),
+      ));
     }
     return data;
+  }
+}
+} 
