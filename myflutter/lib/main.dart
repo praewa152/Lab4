@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'FoodMenu.dart';
 void main() {
   runApp(MyApp());
 }
@@ -17,75 +18,46 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   int number = 0;
+  //กลุ่มข้อมูล
+  List<FoodMenu> menu = [
+    FoodMenu("กุ้งเผา","500",),
+    FoodMenu("ไก่ทอด","500",),
+    FoodMenu("ส้มตำ","60",),
+    FoodMenu("ส้ม","60",)
+  ];
 
- @override
- Widget build(BuildContext context){
- List<Widget> data = [];
-  data.add(Text("กดปุ่มเพื่อเพิ่มจำนวน"));
-  data.add(
-            Text(
-              number.toString(),
-              style: TextStyle(fontSize: 60),
-            ),
-            );
+  //แสดงข้อมูล
   @override
   Widget build(BuildContext context) {
-    List<Widget> data = [];
-    data.add(Text("กดปุ่มเพื่อเพิ่มจำนวน"));
-    data.add(
-      Text(
-        number.toString(),
-        style: TextStyle(fontSize: 60),
-      ),
-    );
-    data.add(Text("hi bro"));
-    for(var i = 0 ;i<10;i++){
-        data.add(Text("flutter"));
-    for (var i = 0; i < 10; i++) {
-      data.add(Text("flutter"));
-    }
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello Flutter"),
-      ),
-      body: Center(
-        child: ListView(
-          children:data,
-          children: getData(15),
+        appBar: AppBar(
+          //หัวเมนู
+          title: Text(
+            "เลือกเมนูอาหาร",
+            style: TextStyle(fontSize: 30),
+          appBar: AppBar(
+          title: Text("เลือก"),
+          ),
         ),
-      ),
+        body: ListView.builder(
+            itemCount: menu.length,
+            itemBuilder: (BuildContext context, int index) {
+              FoodMenu food = menu[index];
+              return ListTile(
+                title: Text(
+                  food.name,
+                  style: TextStyle(fontSize: 20),
+                ),
+                subtitle: Text("ราคา" + food.price + "บาท"),
+                onTap: (){
+                  print("คุณเลือกอาหารชื่อว่าอะไร"+food.name);
+                },
+              );
+            }));
+          body: Column(children: [],)
     );
   }
-void addNumber() {
-  setState(() {
-    number++;
-  });
 }
- List<Widget> getData(int count){
-
-  List<Widget> data = [];
-    for(var i = 0 ;i<count;i++){
-        data.add(Text("รายการที่ ${i+1}"));
-  void addNumber() {
-    setState(() {
-      number++;
-    });
-  }
-
- }
- return data;
-//เตรียมข้อมูล
-  List<Widget> getData(int count) {
-    List<Widget> data = [];
-    for (var i = 0; i < count; i++) {
-      data.add(Text(
-        "เมนูที่ ${i + 1}",
-        style: TextStyle(fontSize: 30),
-      ));
-    }
-    return data;
-  }
-}
-} 
