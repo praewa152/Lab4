@@ -13,73 +13,50 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class MyHomePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() =>  _MyHomePageState();
   _MyHomePageState createState() => _MyHomePageState();
 }
-
-class  _MyHomePageState extends State<MyHomePage> {
-int number= 0;
 class _MyHomePageState extends State<MyHomePage> {
   int number = 0;
-
   @override
   Widget build(BuildContext context) {
- @override
- Widget build(BuildContext context){
- List<Widget> data = [];
-  data.add(Text("กดปุ่มเพื่อเพิ่มจำนวน"));
-  data.add(
-            Text(
-              number.toString(),
-              style: TextStyle(fontSize: 60),
-            ),
-            );
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Hello Flutter"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-                Text("กดปุ่มเพื่อเพิ่มจำนวน "),
-                Text(
-                number.toString(),
-                style:  TextStyle(fontSize: 60),
-                ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed:() {
-            setState(() {
-              number=number+10;
-            });
-          },
-          child: Icon(Icons.add),
-      appBar: AppBar(
-        title: Text("Hello Flutter"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:data,
-        ),
-    );  
- }
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:addNumber, 
-        child:Icon(Icons.add),
+    List<Widget> data = [];
+    data.add(Text("กดปุ่มเพื่อเพิ่มจำนวน"));
+    data.add(
+      Text(
+        number.toString(),
+        style: TextStyle(fontSize: 60),
       ),
     );
-  }
-void addNumber() {
-  setState(() {
-    number++;
-  });
-}
-}
+    data.add(Text("hi bro"));
+    for (var i = 0; i < 10; i++) {
+      data.add(Text("flutter"));
+    }
+    return Scaffold(
+      appBar: AppBar(
+        //หัวเมนู
+        title: Text("เมนู",
+        style: TextStyle(fontSize: 30),),
+        title: Text(
+          "เมนู",
+          style: TextStyle(fontSize: 30),
+        ),
+      ),
+      body: Center(
+        child: ListView(
+          children: getData(5),
+          children: getData(20),
+        ),
+      ),
+    );
+@@ -63,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
+    //text wiget
+    List<Widget> data = [];
+    for (var i = 0; i < count; i++) {
+      var menu = ListTile(title:Text("เมนูที่ $i"));
+      var menu = ListTile(title: Text("เมนูที่ ${i + 1}",style: TextStyle(fontSize: 25),),
+      subtitle: Text("เมนูที่อาหาร ${i + 1}"),);
+      data.add(menu);
+    }
+    return data;
